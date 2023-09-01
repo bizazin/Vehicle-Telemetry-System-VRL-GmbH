@@ -7,10 +7,12 @@ namespace Behaviours
     [RequireComponent(typeof(Collider))]
     public class FieldOfViewBehaviour : MonoBehaviour
     {
-        [SerializeField] private float _radius = 20;
         private readonly List<OtherCar> _detectedVehicles = new();
+        private float _radius;
 
         public event Action<float> OnClosestVehicleDistM;
+
+        public void Setup(float radius) => _radius = radius;
 
         private void OnTriggerEnter(Collider other)
         {
